@@ -1,0 +1,29 @@
+{
+  "name": "whatsapp-college-bridge-bot",
+  "version": "1.0.0",
+  "description": "WhatsApp AI bot starter for helping students discover colleges, deadlines, fees, and application details.",
+  "main": "src/server.js",
+  "scripts": {
+    "db:seed": "node src/scripts/seedDatabase.js",
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node test/run-tests.js"
+  },
+  "keywords": [
+    "whatsapp",
+    "twilio",
+    "college",
+    "admissions",
+    "student"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@google/genai": "^1.17.0",
+    "better-sqlite3": "^11.8.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "openai": "^4.104.0",
+    "twilio": "^5.4.0"
+  }
+}

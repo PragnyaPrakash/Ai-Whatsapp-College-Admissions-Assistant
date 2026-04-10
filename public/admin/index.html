@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CollegeBridge Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/admin/styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">CollegeBridge Admin</p>
+          <h1>Shape the college dataset your WhatsApp advisor uses.</h1>
+          <p class="hero-copy">
+            Add, update, and retire graduation colleges with fees, deadlines, streams, and highlights.
+          </p>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-card">
+            <span id="collegeCount">0</span>
+            <p>Total colleges</p>
+          </div>
+          <div class="stat-card">
+            <span id="activeCount">0</span>
+            <p>Active listings</p>
+          </div>
+        </div>
+      </header>
+
+      <main class="dashboard-grid">
+        <section class="panel form-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Editor</p>
+              <h2 id="formTitle">Add a college</h2>
+            </div>
+            <button id="resetFormButton" class="ghost-button" type="button">New entry</button>
+          </div>
+
+          <form id="collegeForm" class="college-form">
+            <label>
+              College ID
+              <input id="id" name="id" placeholder="example-college" required />
+            </label>
+
+            <label>
+              College name
+              <input id="name" name="name" placeholder="Example University" required />
+            </label>
+
+            <label>
+              Location
+              <input id="location" name="location" placeholder="Chennai, Tamil Nadu" required />
+            </label>
+
+            <label>
+              Streams
+              <input id="streams" name="streams" placeholder="engineering, business, arts" required />
+            </label>
+
+            <label>
+              Fees per year (INR)
+              <input id="feesInrPerYear" name="feesInrPerYear" type="number" min="0" required />
+            </label>
+
+            <label>
+              Application deadline
+              <input id="applicationDeadline" name="applicationDeadline" type="date" required />
+            </label>
+
+            <label>
+              Application mode
+              <input id="applicationMode" name="applicationMode" placeholder="Online application and interview" required />
+            </label>
+
+            <label>
+              Eligibility
+              <textarea id="eligibility" name="eligibility" rows="3" placeholder="Class 12 completion with course-specific criteria" required></textarea>
+            </label>
+
+            <label>
+              Website
+              <input id="website" name="website" type="url" placeholder="https://example.edu" required />
+            </label>
+
+            <label>
+              Highlights
+              <textarea id="highlights" name="highlights" rows="4" placeholder="Scholarships available, City campus, Placement support" required></textarea>
+            </label>
+
+            <label class="toggle-row">
+              <input id="isActive" name="isActive" type="checkbox" checked />
+              <span>Show this college in student recommendations</span>
+            </label>
+
+            <div class="form-actions">
+              <button id="submitButton" class="primary-button" type="submit">Save college</button>
+              <button id="deactivateButton" class="danger-button hidden" type="button">Deactivate</button>
+            </div>
+          </form>
+
+          <p id="statusMessage" class="status-message"></p>
+        </section>
+
+        <section class="panel list-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">College Records</p>
+              <h2>Current database entries</h2>
+            </div>
+            <button id="refreshButton" class="ghost-button" type="button">Refresh</button>
+          </div>
+
+          <label class="search-row">
+            <span>Search</span>
+            <input id="searchInput" placeholder="Search by name, location, or stream" />
+          </label>
+
+          <div id="collegeList" class="college-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <template id="collegeCardTemplate">
+      <article class="college-card">
+        <div class="college-card-top">
+          <div>
+            <p class="college-name"></p>
+            <p class="college-location"></p>
+          </div>
+          <span class="status-pill"></span>
+        </div>
+        <div class="tag-row streams-row"></div>
+        <dl class="info-grid">
+          <div>
+            <dt>Fees</dt>
+            <dd class="college-fees"></dd>
+          </div>
+          <div>
+            <dt>Deadline</dt>
+            <dd class="college-deadline"></dd>
+          </div>
+        </dl>
+        <p class="college-mode"></p>
+        <div class="tag-row highlights-row"></div>
+        <div class="card-actions">
+          <button class="ghost-button edit-button" type="button">Edit</button>
+          <button class="danger-button deactivate-card-button" type="button">Deactivate</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="/admin/app.js"></script>
+  </body>
+</html>
